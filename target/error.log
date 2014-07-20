@@ -1,0 +1,2 @@
+0    [main] ERROR org.hibernate.util.XMLHelper  - Error parsing XML: /hibernate.cfg.xml(1) El documento no es válido: no se ha encontrado la gramática.
+2    [main] ERROR org.hibernate.util.XMLHelper  - Error parsing XML: /hibernate.cfg.xml(1) El elemento raíz del documento "hibernate-configuration", debe coincidir con la raíz DOCTYPE "null".

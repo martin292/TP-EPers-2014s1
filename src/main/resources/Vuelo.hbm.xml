@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="aerolinea.Vuelo" table="vuelo">
+		<id name="id" type="java.lang.Integer">
+			<column name="id"/>
+			<generator class="identity"/>
+		</id>
+		
+		<many-to-one name="aerolinea">
+        	<column name="idAerolinea"/>
+     	</many-to-one>
+     	
+		<bag name="tramos" cascade="all" inverse="true">
+       		<key column="idVuelo" />
+       		<one-to-many class="aerolinea.Tramo" />
+       	</bag>
+       	
+       	<property name="llegada" type="java.util.Date">
+            <column name="llegada" not-null="true" unique="false" />
+        </property>
+                
+        <property name="salida" type="java.util.Date">
+            <column name="salida" not-null="true" unique="false" />
+        </property>
+        
+        <property name="origen" type="string">
+            <column name="origen" not-null="true" unique="false" />
+        </property>
+        
+        <property name="destino" type="string">
+            <column name="destino" not-null="true" unique="false" />
+        </property>
+        
+        <property name="costo" type="java.lang.Integer">
+            <column name="costo" not-null="false" unique="false" />
+        </property>
+        
+        <property name="escalas" type="java.lang.Integer">
+            <column name="escalas" not-null="false" unique="false" />
+        </property>
+        
+         <property name="duracion" type="java.util.Date">
+            <column name="duracion" not-null="false" unique="false" />
+        </property>
+		
+	</class>
+</hibernate-mapping>

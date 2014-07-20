@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="aerolinea.Categoria" table="categoria">
+		<id name="id" type="java.lang.Integer">
+			<column name="id"/>
+			<generator class="identity"/>
+		</id>		
+		
+		<discriminator column="cat" type="string" />		
+		
+		<property name="precio" type="java.lang.Integer">
+			<column name="precio" length="5" not-null="false" />
+		</property>
+		
+		<bag name="asientos" cascade="all" inverse="false">
+       		<key column="idCategoria" />
+       		<one-to-many class="aerolinea.Asiento" />
+       	</bag>
+		
+	</class>	
+
+</hibernate-mapping>

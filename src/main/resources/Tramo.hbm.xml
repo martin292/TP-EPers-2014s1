@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ 
+<hibernate-mapping>
+    <class name="aerolinea.Tramo" table="tramo" >
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        
+        <property name="llegada" type="java.util.Date">
+            <column name="llegada" length="20" not-null="true" unique="false" />
+        </property>
+                
+        <property name="salida" type="java.util.Date">
+            <column name="salida" length="20" not-null="true" unique="false" />
+        </property>
+        
+       	<bag name="asientos" cascade="all" inverse="false">
+       		<key column="idTramo" />
+       		<one-to-many class="aerolinea.Asiento" />
+       	</bag>
+       	
+       	<many-to-one name="vuelo">
+        	<column name="idVuelo"/>
+     	</many-to-one>
+    </class>
+</hibernate-mapping>
+
